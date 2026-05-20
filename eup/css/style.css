@@ -340,6 +340,28 @@ table tr:hover {
     margin-right: 0.6rem;
 }
 
+/* ===== OPTIONS IN TESTS (outside .exercise) ===== */
+.section .options label {
+    display: block;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.section .options label:hover {
+    background: var(--secondary-light);
+    border-color: var(--secondary);
+}
+
+.section .options input[type="radio"],
+.section .options input[type="checkbox"] {
+    margin-right: 0.6rem;
+}
+
 .exercise .options label.selected {
     background: #d4edda;
     border-color: var(--success);

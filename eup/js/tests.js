@@ -203,7 +203,10 @@
 
         if (question.type === 'match') {
             const selects = document.querySelectorAll('#match-q' + index + ' select');
-            return Array.from(selects).map(function(sel) { return parseInt(sel.value); });
+            const values = Array.from(selects).map(function(sel) { return parseInt(sel.value); });
+            // Если хотя бы один select не выбран (значение -1), считаем вопрос неотвеченным
+            if (values.some(function(v) { return v === -1; })) return null;
+            return values;
         }
 
         return null;

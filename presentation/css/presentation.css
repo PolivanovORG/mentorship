@@ -2,9 +2,16 @@
     --primary: #2c3e50;
     --secondary: #3498db;
     --accent: #e74c3c;
+    --success: #27ae60;
     --bg: #f8f9fa;
     --text: #333;
+    --text-light: #666;
     --slide-bg: #ffffff;
+    --slide-gradient-1: #f0f4f8;
+    --slide-gradient-2: #e8eef5;
+    --border-light: #e2e8f0;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,11 +42,21 @@ body {
     justify-content: center;
     align-items: center;
     padding: 4rem;
-    background: var(--slide-bg);
+    background: linear-gradient(160deg, var(--slide-bg) 0%, var(--slide-gradient-1) 50%, var(--slide-gradient-2) 100%);
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
     overflow-y: auto;
+}
+
+/* Top accent line on content slides */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary), var(--success), var(--secondary));
+    opacity: 0.6;
 }
 
 .slide.active {
@@ -51,12 +68,17 @@ body {
     max-width: 1000px;
     width: 100%;
     text-align: center;
+    position: relative;
 }
 
 /* ===== SLIDE 1: TITLE ===== */
 .slide-title {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     color: white;
+}
+
+.slide-title::before {
+    display: none;
 }
 
 .slide-title .slide-content h1 {
@@ -80,7 +102,10 @@ body {
 .slide h2 {
     font-size: 2rem;
     color: var(--primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 3px solid var(--border-light);
+    display: inline-block;
 }
 
 .slide .slide-number {
@@ -103,17 +128,40 @@ body {
     position: relative;
     font-size: 1.05rem;
     line-height: 1.5;
+    color: var(--text);
 }
 
 .slide ul li::before {
-    content: "•";
+    content: "";
     position: absolute;
-    left: 0.5rem;
-    color: var(--secondary);
-    font-weight: bold;
-    font-size: 1.2rem;
+    left: 0.4rem;
+    top: 1rem;
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 2px;
+    opacity: 0.7;
 }
 
+.slide ul li strong {
+    color: var(--primary);
+}
+
+/* Numbered list styling */
+.slide ol {
+    text-align: left;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.slide ol li {
+    padding: 0.4rem 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* ===== GRID ===== */
 .slide .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -123,14 +171,93 @@ body {
 }
 
 .slide .grid-item {
-    background: var(--bg);
+    background: var(--slide-bg);
     border-radius: 12px;
-    padding: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide .grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 0.3;
+    border-radius: 0 2px 2px 0;
+}
+
+.slide .grid-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .slide .grid-item h4 {
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+    font-size: 1.1rem;
+}
+
+.slide .grid-item p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-light);
+}
+
+/* ===== INFO BOXES ON SLIDES ===== */
+.slide .info-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--slide-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--secondary);
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+}
+
+.slide .info-box h4 {
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+}
+
+.slide .info-box p {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.slide .info-box strong {
+    color: var(--text);
+}
+
+/* ===== HIGHLIGHT BADGE ===== */
+.slide .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bg);
     color: var(--secondary);
-    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-light);
+}
+
+.slide .badge-green {
+    background: #e8f8f5;
+    color: var(--success);
+    border-color: #c3e6cb;
+}
+
+.slide .badge-yellow {
+    background: #fef9e7;
+    color: #7d6608;
+    border-color: #ffeeba;
 }
 
 /* ===== NAVIGATION ===== */
@@ -186,6 +313,49 @@ body {
     font-size: 0.85rem;
     min-width: 60px;
     text-align: center;
+}
+
+/* ===== SPEAKER NOTES ===== */
+.speaker-notes {
+    position: absolute;
+    bottom: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    line-height: 1.4;
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.speaker-notes.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ===== REPORT SLIDE ===== */
+.slide-report h2 {
+    color: var(--accent);
+}
+
+.slide-report .grid-item h4 {
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.slide-report .grid-item p {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.3rem;
+    line-height: 1.4;
 }
 
 /* ===== TIMER ===== */
