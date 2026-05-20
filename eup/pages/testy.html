@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты — Тьюторское сопровождение</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo"><a href="../../index.html">📘</a> <a href="../index.html">ЭУП</a>: Тесты</div>
+        <nav class="top-nav">
+            <a href="../index.html">Главная</a>
+            <a href="teoriya.html">Теория</a>
+            <a href="praktikum.html">Практикум</a>
+            <a href="testy.html" class="active">Тесты</a>
+            <a href="materialy.html">Материалы</a>
+            <a href="rekomendacii.html">Рекомендации</a>
+        </nav>
+    </div>
+
+    <div id="breadcrumbs" class="breadcrumbs"></div>
+
+    <div class="main">
+        <div class="page-header">
+            <h1>📝 Тестовые задания</h1>
+            <p class="desc">Проверьте свои знания по теме тьюторского сопровождения проектной деятельности. 10 вопросов с автоматической проверкой.</p>
+        </div>
+
+        <div id="test-container">
+            <!-- Вопросы будут сгенерированы JS -->
+        </div>
+
+        <div style="text-align:center;margin:2rem 0;">
+            <button class="btn btn-success" onclick="checkTest()" style="padding:0.8rem 2.5rem;font-size:1.1rem;">✅ Проверить все ответы</button>
+            <button class="btn btn-outline" onclick="resetTest()" style="margin-left:1rem;">🔄 Сбросить</button>
+        </div>
+
+        <div id="test-result" class="section" style="display:none;"></div>
+    </div>
+
+    <button id="back-to-top" style="display:none;position:fixed;bottom:2rem;right:2rem;padding:0.8rem 1rem;background:#3498db;color:white;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);z-index:50;">↑</button>
+
+    <div class="footer">
+        <p>© 2025 · Электронное учебное пособие по дисциплине «Технологии наставничества и тьюторинга в СПО»</p>
+        <p><a href="../index.html">На главную ЭУП</a> · <a href="../../index.html">На портал</a></p>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/tests.js"></script>
+    <script src="../js/stats.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTests();
+        });
+
+        function renderTests() {
+            var container = document.getElementById('test-container');
+            var html = '';
+
+            window.testData.forEach(function(item, index) {
+                html += '<div class="section" id="q-section-' + index + '">';
+                html += '<h3>Вопрос ' + (index + 1) + ' из ' + window.testData.length + '</h3>';
+                html += '<p style="margin-bottom:1rem;">' + item.question + '</p>';
+
+                if (item.type === 'single') {
+                    html += '<div class="options">';
+                    item.options.forEach(function(opt, oi) {
+                        html += '<label><input type="radio" name="q' + index + '" value="' + oi + '"> ' + opt + '</label>';
+                    });
+                    html += '</div>';
+                } else if (item.type === 'multiple') {
+                    html += '<p style="font-size:0.85rem;color:#666;margin-bottom:0.5rem;"><em>Выберите все правильные варианты</em></p>';
+                    html += '<div class="options">';
+                    item.options.forEach(function(opt, oi) {
+                        html += '<label><input type="checkbox" name="q' + index + '" value="' + oi + '"> ' + opt + '</label>';
+                    });
+                    html += '</div>';
+                } else if (item.type === 'match') {
+                    html += '<div id="match-q' + index + '">';
+                    item.pairs.forEach(function(pair, pi) {
+                        html += '<div style="margin:0.5rem 0;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">';
+                        html += '<span style="min-width:180px;font-weight:500;">' + pair.left + '</span>';
+                        html += '<span>→</span>';
+                        html += '<select style="padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;flex:1;min-width:200px;">';
+                        html += '<option value="-1">— выберите —</option>';
+                        item.pairs.forEach(function(opt, oi) {
+                            html += '<option value="' + oi + '">' + opt.right + '</option>';
+                        });
+                        html += '</select>';
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                }
+
+                html += '<div id="feedback-q' + index + '" class="feedback" style="display:none;"></div>';
+                html += '</div>';
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Переопределяем функцию показа результата
+        var originalCheckTest = window.checkTest;
+        window.checkTest = function() {
+            originalCheckTest();
+            var resultDiv = document.getElementById('test-result');
+            if (resultDiv) {
+                resultDiv.style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>

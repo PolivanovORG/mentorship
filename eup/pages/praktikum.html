@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум — Тьюторское сопровождение</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo"><a href="../../index.html">📘</a> <a href="../index.html">ЭУП</a>: Практикум</div>
+        <nav class="top-nav">
+            <a href="../index.html">Главная</a>
+            <a href="teoriya.html">Теория</a>
+            <a href="praktikum.html" class="active">Практикум</a>
+            <a href="testy.html">Тесты</a>
+            <a href="materialy.html">Материалы</a>
+            <a href="rekomendacii.html">Рекомендации</a>
+        </nav>
+    </div>
+
+    <div id="breadcrumbs" class="breadcrumbs"></div>
+
+    <div class="main">
+        <div class="page-header">
+            <h1>🔧 Практикум</h1>
+            <p class="desc">Интерактивные упражнения и кейсы для отработки навыков тьюторского сопровождения</p>
+        </div>
+
+        <!-- Примеры / Моделирующий компонент -->
+        <div class="section">
+            <h2>📋 Примеры выполнения заданий</h2>
+            <p>Прежде чем приступить к упражнениям, ознакомьтесь с образцами выполнения типовых задач тьютора.</p>
+
+            <div class="card-grid">
+                <div class="card-item">
+                    <h4>Пример 1: Карта проектных идей</h4>
+                    <p><strong>Тема:</strong> Разработка веб-приложения для учёта книг в библиотеке колледжа</p>
+                    <p><strong>Проблема:</strong> В библиотеке колледжа отсутствует электронная система учёта, студенты не могут удалённо проверить наличие книг</p>
+                    <p><strong>Продукт:</strong> Веб-приложение с каталогом, поиском и бронированием книг</p>
+                    <p><strong>Актуальность:</strong> Упростит доступ к библиотечным ресурсам для 2000+ студентов</p>
+                </div>
+                <div class="card-item">
+                    <h4>Пример 2: Дерево проблем</h4>
+                    <p><strong>Проблема:</strong> Студенты не успевают выполнить проект в срок</p>
+                    <p><strong>Корень (причина):</strong> Отсутствие навыков тайм-менеджмента</p>
+                    <p><strong>Ветви (решения):</strong> Тьюториал по планированию, шаблон графика проекта, еженедельные чек-ины</p>
+                </div>
+                <div class="card-item">
+                    <h4>Пример 3: Индивидуальный план</h4>
+                    <p><strong>Студент:</strong> Иванов А., 2 курс, специальность 09.02.07</p>
+                    <p><strong>Цель:</strong> Разработать веб-приложение для портфолио</p>
+                    <p><strong>Этапы:</strong> 1) Выбор темы — 2) Сбор требований — 3) Прототип — 4) Разработка — 5) Тестирование — 6) Защита</p>
+                    <p><strong>Формы сопровождения:</strong> 4 консультации, 2 тьюториала, 1 образовательное событие</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Упражнение 1 -->
+        <div class="section">
+            <h2>Упражнение 1: Сформулируй проблему 🎯</h2>
+            <div class="exercise">
+                <p class="task-text"><strong>Задание:</strong> Представьте, что вы — тьютор. Студент обратился к вам с запросом: <em>«Хочу сделать проект, но не знаю, что выбрать»</em>. Сформулируйте 2–3 наводящих вопроса, которые помогут студенту определить тему. Используйте открытые вопросы.</p>
+                <textarea id="ex1-answer" placeholder="Напишите ваши вопросы здесь..."></textarea>
+                <button class="btn-check" onclick="checkExercise1()">Проверить</button>
+                <div id="ex1-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Упражнение 2: Кейс "Студент не может выбрать тему" -->
+        <div class="section">
+            <h2>Упражнение 2: Кейс «Выбор темы проекта» 📋</h2>
+            <div class="exercise" id="ex2">
+                <p class="task-text"><strong>Ситуация:</strong> К вам как к тьютору пришёл студент 2 курса. Он интересуется веб-разработкой, но не может выбрать между тремя темами: 1) интернет-магазин, 2) портфолио-сайт, 3) игра-кликер. Какая стратегия тьютора будет наиболее эффективной на <strong>диагностическом этапе</strong>?</p>
+                <div class="options" id="ex2-options">
+                    <label><input type="radio" name="ex2" value="0"> Посоветовать самую простую тему, чтобы студент точно справился</label>
+                    <label><input type="radio" name="ex2" value="1"> Провести анкетирование и интервью, чтобы выявить истинные интересы и ресурсы студента</label>
+                    <label><input type="radio" name="ex2" value="2"> Дать студенту все три темы и сказать выбрать любую до завтра</label>
+                    <label><input type="radio" name="ex2" value="3"> Выбрать тему за студента на основе его оценок</label>
+                </div>
+                <button class="btn-check" onclick="checkEx2()">Проверить</button>
+                <div id="ex2-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Упражнение 3: Кейс "Конфликт в группе" -->
+        <div class="section">
+            <h2>Упражнение 3: Кейс «Конфликт в проектной группе» 🤝</h2>
+            <div class="exercise" id="ex3">
+                <p class="task-text"><strong>Ситуация:</strong> В проектной группе из 3 человек возник конфликт. Один студент делает большую часть работы, двое других отлынивают. «Активный» студент требует пересмотра ролей. Какую роль должен занять тьютор?</p>
+                <div class="options" id="ex3-options">
+                    <label><input type="radio" name="ex3" value="0"> Встать на сторону активного студента и наказать остальных</label>
+                    <label><input type="radio" name="ex3" value="1"> Провести медиацию: организовать встречу, где каждый выскажет свою позицию, и помочь группе договориться о новых ролях</label>
+                    <label><input type="radio" name="ex3" value="2"> Игнорировать конфликт — студенты должны разбираться сами</label>
+                    <label><input type="radio" name="ex3" value="3"> Разделить группу и дать каждому индивидуальное задание</label>
+                </div>
+                <button class="btn-check" onclick="checkEx3()">Проверить</button>
+                <div id="ex3-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Упражнение 4: Построй маршрут -->
+        <div class="section">
+            <h2>Упражнение 4: «Построй маршрут» 🗺️</h2>
+            <div class="exercise" id="ex4">
+                <p class="task-text"><strong>Задание:</strong> Сопоставьте этап проектной деятельности с наиболее подходящей формой тьюторского сопровождения. Выберите правильный вариант для каждого этапа.</p>
+
+                <div style="margin:1rem 0;">
+                    <p><strong>1. Выбор темы проекта</strong></p>
+                    <select id="ex4-1" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;">
+                        <option value="-1">— выберите форму —</option>
+                        <option value="0">Тьюториал «Карта проектных идей»</option>
+                        <option value="1">Индивидуальная консультация по написанию отчёта</option>
+                        <option value="2">Образовательное событие «Хакатон»</option>
+                    </select>
+                </div>
+                <div style="margin:1rem 0;">
+                    <p><strong>2. Сбор требований и прототипирование</strong></p>
+                    <select id="ex4-2" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;">
+                        <option value="-1">— выберите форму —</option>
+                        <option value="0">Защита проекта перед комиссией</option>
+                        <option value="1">Тьюториал «Анализ требований и целевая аудитория»</option>
+                        <option value="2">Экзамен по дисциплине</option>
+                    </select>
+                </div>
+                <div style="margin:1rem 0;">
+                    <p><strong>3. Презентация промежуточных результатов</strong></p>
+                    <select id="ex4-3" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;">
+                        <option value="-1">— выберите форму —</option>
+                        <option value="0">Лекция о теории проектирования</option>
+                        <option value="1">Индивидуальная консультация по техническим вопросам</option>
+                        <option value="2">Групповой тьюториал с обратной связью «Плюс-дельта»</option>
+                    </select>
+                </div>
+                <button class="btn-check" onclick="checkEx4()">Проверить</button>
+                <div id="ex4-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Упражнение 5: Рефлексивный дневник -->
+        <div class="section">
+            <h2>Упражнение 5: «Рефлексивный дневник» 📝</h2>
+            <div class="exercise" id="ex5">
+                <p class="task-text"><strong>Задание:</strong> Заполните рефлексивный дневник тьюторанта после завершения этапа работы над проектом. Оцените каждый критерий по шкале от 1 до 5.</p>
+                <div id="ex5-questions">
+                    <div style="margin:0.8rem 0;">
+                        <p>1. Насколько ясно я понимаю цель моего проекта?</p>
+                        <select id="ex5-1" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;">
+                            <option value="0">— выберите —</option>
+                            <option value="1">1 — совсем не понимаю</option>
+                            <option value="2">2 — скорее не понимаю</option>
+                            <option value="3">3 — частично понимаю</option>
+                            <option value="4">4 — в основном понимаю</option>
+                            <option value="5">5 — полностью понимаю</option>
+                        </select>
+                    </div>
+                    <div style="margin:0.8rem 0;">
+                        <p>2. Насколько эффективно я распределяю своё время?</p>
+                        <select id="ex5-2" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #dee2e6;">
+                            <option value="0">— выберите —</option>
+                            <option value="1">1 — совсем не эффективно</option>
+                            <option value="2">2 — скорее не эффективно</option>
+                            <option value="3">3 — средне</option>
+                            <option value="4">4 — достаточно эффективно</option>
+                            <option value="5">5 — очень эффективно</option>
+                        </select>
+                    </div>
+                    <div style="margin:0.8rem 0;">
+                        <p>3. Какие новые знания и навыки я приобрёл?</p>
+                        <textarea id="ex5-3" placeholder="Опишите, чему вы научились..." style="width:100%;padding:0.7rem;border:1px solid #dee2e6;border-radius:8px;min-height:80px;font-family:inherit;"></textarea>
+                    </div>
+                    <div style="margin:0.8rem 0;">
+                        <p>4. Какие трудности возникли и как я их преодолел?</p>
+                        <textarea id="ex5-4" placeholder="Опишите трудности и способы их решения..." style="width:100%;padding:0.7rem;border:1px solid #dee2e6;border-radius:8px;min-height:80px;font-family:inherit;"></textarea>
+                    </div>
+                    <div style="margin:0.8rem 0;">
+                        <p>5. Какова моя следующая цель?</p>
+                        <textarea id="ex5-5" placeholder="Сформулируйте следующую цель..." style="width:100%;padding:0.7rem;border:1px solid #dee2e6;border-radius:8px;min-height:60px;font-family:inherit;"></textarea>
+                    </div>
+                </div>
+                <button class="btn-check" onclick="checkEx5()">Проверить заполнение</button>
+                <div id="ex5-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="back-to-top" style="display:none;position:fixed;bottom:2rem;right:2rem;padding:0.8rem 1rem;background:#3498db;color:white;border:none;border-radius:50%;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 15px rgba(0,0,0,0.2);z-index:50;">↑</button>
+
+    <div class="footer">
+        <p>© 2025 · Электронное учебное пособие по дисциплине «Технологии наставничества и тьюторинга в СПО»</p>
+        <p><a href="../index.html">На главную ЭУП</a> · <a href="../../index.html">На портал</a></p>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        function checkExercise1() {
+            var answer = document.getElementById('ex1-answer').value.trim();
+            var fb = document.getElementById('ex1-feedback');
+            if (answer.length < 10) {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Напишите хотя бы 2-3 вопроса. Используйте открытые вопросы: «Что тебя интересует?», «Какую проблему хочешь решить?»';
+                return;
+            }
+            // Проверяем наличие вопросительных знаков
+            var qCount = (answer.match(/\?/g) || []).length;
+            if (qCount >= 2) {
+                fb.className = 'feedback correct';
+                fb.style.display = 'block';
+                fb.innerHTML = '✅ Отлично! Вы сформулировали ' + qCount + ' вопроса. Открытые вопросы помогают студенту самостоятельно прийти к выбору темы.';
+            } else {
+                fb.className = 'feedback partial';
+                fb.style.display = 'block';
+                fb.innerHTML = '⚠️ Хорошее начало! Но постарайтесь задать не менее 2-3 вопросов. Пример: «Какая профессиональная проблема тебя волнует?», «Что бы ты хотел изменить в своей учебной среде?»';
+            }
+        }
+
+        function checkEx2() {
+            var selected = document.querySelector('input[name="ex2"]:checked');
+            var fb = document.getElementById('ex2-feedback');
+            if (!selected) {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Пожалуйста, выберите вариант ответа.';
+                return;
+            }
+            if (selected.value === '1') {
+                fb.className = 'feedback correct';
+                fb.style.display = 'block';
+                fb.innerHTML = '✅ Верно! На диагностическом этапе тьютор должен выявить истинные интересы и ресурсы студента через анкетирование и интервью, а не навязывать готовые решения.';
+                document.querySelectorAll('#ex2-options label').forEach(function(l) { l.classList.remove('selected'); });
+                selected.parentElement.classList.add('selected');
+            } else {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Неверно. На диагностическом этапе тьютор не даёт готовых ответов, а помогает студенту осознать собственные интересы через диагностику. Правильный ответ: провести анкетирование и интервью.';
+            }
+        }
+
+        function checkEx3() {
+            var selected = document.querySelector('input[name="ex3"]:checked');
+            var fb = document.getElementById('ex3-feedback');
+            if (!selected) {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Пожалуйста, выберите вариант ответа.';
+                return;
+            }
+            if (selected.value === '1') {
+                fb.className = 'feedback correct';
+                fb.style.display = 'block';
+                fb.innerHTML = '✅ Верно! Медиация — одна из ключевых функций тьютора. Тьютор помогает группе договориться, а не принимает сторону одного из участников.';
+                document.querySelectorAll('#ex3-options label').forEach(function(l) { l.classList.remove('selected'); });
+                selected.parentElement.classList.add('selected');
+            } else {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Неверно. Тьютор выполняет медиативную функцию: помогает сторонам услышать друг друга и найти взаимоприемлемое решение. Игнорирование конфликта или наказание — не тьюторская позиция.';
+            }
+        }
+
+        function checkEx4() {
+            var answers = {
+                'ex4-1': 0,
+                'ex4-2': 1,
+                'ex4-3': 2
+            };
+            var correct = 0;
+            var total = 3;
+            var details = [];
+
+            for (var key in answers) {
+                var sel = document.getElementById(key);
+                var val = parseInt(sel.value);
+                if (val === answers[key]) {
+                    correct++;
+                    details.push('✅');
+                } else {
+                    details.push('❌');
+                }
+            }
+
+            var fb = document.getElementById('ex4-feedback');
+            var msg = 'Результат: ' + correct + ' из ' + total + ' правильных.<br>';
+            msg += '1. Выбор темы: ' + details[0] + ' (правильно: тьюториал «Карта проектных идей»)<br>';
+            msg += '2. Сбор требований: ' + details[1] + ' (правильно: тьюториал «Анализ требований»)<br>';
+            msg += '3. Презентация результатов: ' + details[2] + ' (правильно: групповой тьюториал с обратной связью)';
+
+            if (correct === total) {
+                fb.className = 'feedback correct';
+            } else if (correct >= 1) {
+                fb.className = 'feedback partial';
+            } else {
+                fb.className = 'feedback incorrect';
+            }
+            fb.style.display = 'block';
+            fb.innerHTML = msg;
+        }
+
+        function checkEx5() {
+            var q1 = document.getElementById('ex5-1').value;
+            var q2 = document.getElementById('ex5-2').value;
+            var q3 = document.getElementById('ex5-3').value.trim();
+            var q4 = document.getElementById('ex5-4').value.trim();
+            var q5 = document.getElementById('ex5-5').value.trim();
+
+            var fb = document.getElementById('ex5-feedback');
+            var filled = 0;
+            if (q1 !== '0') filled++;
+            if (q2 !== '0') filled++;
+            if (q3.length > 5) filled++;
+            if (q4.length > 5) filled++;
+            if (q5.length > 5) filled++;
+
+            if (filled === 5) {
+                fb.className = 'feedback correct';
+                fb.style.display = 'block';
+                fb.innerHTML = '✅ Отлично! Вы полностью заполнили рефлексивный дневник. Регулярная рефлексия — ключевой навык субъектной позиции. Сохраните свои ответы для дальнейшей работы.';
+            } else if (filled >= 3) {
+                fb.className = 'feedback partial';
+                fb.style.display = 'block';
+                fb.innerHTML = '⚠️ Заполнено ' + filled + ' из 5 пунктов. Постарайтесь ответить на все вопросы для полноценной рефлексии.';
+            } else {
+                fb.className = 'feedback incorrect';
+                fb.style.display = 'block';
+                fb.innerHTML = '❌ Заполнено только ' + filled + ' из 5 пунктов. Рефлексивный дневник помогает осмыслить опыт — уделите внимание каждому вопросу.';
+            }
+        }
+    </script>
+</body>
+</html>

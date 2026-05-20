@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тьюторское сопровождение проектной деятельности — ЭУП</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-bar">
+        <div class="logo"><a href="../index.html">📘</a> ЭУП: Тьюторское сопровождение</div>
+        <nav class="top-nav">
+            <a href="index.html" class="active">Главная</a>
+            <a href="pages/teoriya.html">Теория</a>
+            <a href="pages/praktikum.html">Практикум</a>
+            <a href="pages/testy.html">Тесты</a>
+            <a href="pages/materialy.html">Материалы</a>
+            <a href="pages/rekomendacii.html">Рекомендации</a>
+        </nav>
+    </div>
+
+    <div id="breadcrumbs" class="breadcrumbs"></div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="page-header">
+            <h1>📘 Тьюторское сопровождение проектной деятельности студентов СПО</h1>
+            <p class="desc">Электронное учебное пособие по дисциплине «Технологии наставничества и тьюторинга в среднем профессиональном образовании»</p>
+        </div>
+
+        <!-- Аннотация -->
+        <div class="section">
+            <h2>О пособии</h2>
+            <p>Данное электронное учебное пособие предназначено для студентов специальности <strong>09.02.07 Информационные системы и программирование</strong> (квалификация: <strong>Разработчик веб и мультимедийных приложений</strong>).</p>
+            <p>Пособие знакомит с технологией <strong>тьюторского сопровождения проектной деятельности</strong> — одной из ключевых педагогических технологий индивидуализации образования в системе СПО.</p>
+            <p>В пособии вы найдёте:</p>
+            <ul>
+                <li><strong>Теоретический материал</strong> — концептуальные основы тьюторского сопровождения, этапы, формы и методы работы тьютора</li>
+                <li><strong>Практикум</strong> — интерактивные упражнения и кейсы для отработки навыков</li>
+                <li><strong>Тесты</strong> — 10 вопросов с автоматической проверкой</li>
+                <li><strong>Дополнительные материалы</strong> — глоссарий, фрагменты научных статей, ссылки на ресурсы</li>
+                <li><strong>Рекомендации тьютора</strong> — методические указания по организации тьюторского сопровождения</li>
+            </ul>
+        </div>
+
+        <!-- Навигация по разделам -->
+        <div class="section">
+            <h2>Разделы пособия</h2>
+            <div class="card-grid">
+                <a href="pages/teoriya.html" class="card-item" style="text-decoration:none;display:block;">
+                    <h4>📖 Теория</h4>
+                    <p style="color:#666;font-size:0.9rem;">Основной материал: определение, этапы, формы, нормативная база</p>
+                </a>
+                <a href="pages/praktikum.html" class="card-item" style="text-decoration:none;display:block;">
+                    <h4>🔧 Практикум</h4>
+                    <p style="color:#666;font-size:0.9rem;">5 интерактивных упражнений и кейсов</p>
+                </a>
+                <a href="pages/testy.html" class="card-item" style="text-decoration:none;display:block;">
+                    <h4>📝 Тесты</h4>
+                    <p style="color:#666;font-size:0.9rem;">10 вопросов с автоматической проверкой</p>
+                </a>
+                <a href="pages/materialy.html" class="card-item" style="text-decoration:none;display:block;">
+                    <h4>📚 Дополнительные материалы</h4>
+                    <p style="color:#666;font-size:0.9rem;">Глоссарий, статьи, ссылки</p>
+                </a>
+                <a href="pages/rekomendacii.html" class="card-item" style="text-decoration:none;display:block;">
+                    <h4>💡 Рекомендации тьютора</h4>
+                    <p style="color:#666;font-size:0.9rem;">Методические указания и шаблоны</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Статистика -->
+        <div id="stats-container"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 · Электронное учебное пособие по дисциплине «Технологии наставничества и тьюторинга в СПО»</p>
+        <p><a href="../index.html">На главную</a> · <a href="../зачет.md">Задание к зачёту</a></p>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/stats.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof displayStats === 'function') {
+                displayStats('stats-container');
+            }
+        });
+    </script>
+</body>
+</html>

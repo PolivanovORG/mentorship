@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тьюторское сопровождение проектной деятельности студентов СПО</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --text: #333;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            text-align: center;
+        }
+        header {
+            margin-bottom: 3rem;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        header .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        header .meta {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #888;
+        }
+        header .meta span {
+            display: inline-block;
+            margin: 0 0.5rem;
+            padding: 0.3rem 0.8rem;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .card.eup { border-top: 5px solid var(--secondary); }
+        .card.eup:hover { border-color: var(--secondary); }
+        .card.pres { border-top: 5px solid var(--accent); }
+        .card.pres:hover { border-color: var(--accent); }
+        .card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .card .btn {
+            margin-top: 1.2rem;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .card.eup .btn { background: var(--secondary); color: white; }
+        .card.eup .btn:hover { background: #2980b9; }
+        .card.pres .btn { background: var(--accent); color: white; }
+        .card.pres .btn:hover { background: #c0392b; }
+        .footer {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        .footer a { color: var(--secondary); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 700px) {
+            .cards { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📘 Тьюторское сопровождение проектной деятельности студентов СПО</h1>
+            <p class="subtitle">Электронное учебное пособие по дисциплине<br>
+            «Технологии наставничества и тьюторинга в среднем профессиональном образовании»</p>
+            <div class="meta">
+                <span>🎯 Специальность 09.02.07</span>
+                <span>💻 Разработчик веб и мультимедийных приложений</span>
+                <span>📅 2025</span>
+            </div>
+        </header>
+
+        <div class="cards">
+            <a href="eup/index.html" class="card eup">
+                <div class="icon">📖</div>
+                <h2>Электронное учебное пособие</h2>
+                <p>Теоретический материал, интерактивный практикум, тесты с автоматической проверкой, глоссарий и рекомендации тьютора.</p>
+                <span class="btn">Перейти к пособию →</span>
+            </a>
+            <a href="presentation/index.html" class="card pres">
+                <div class="icon">🎤</div>
+                <h2>Презентация к защите</h2>
+                <p>Презентация для защиты зачётной работы: нормативная база, технологии тьюторского сопровождения, структура ЭУП, контроль и оценка.</p>
+                <span class="btn">Смотреть презентацию →</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>На основе ФГОС СПО 09.02.07 (приказ Минобрнауки №1547) · Письмо Минпросвещения № А3-1128/08/657</p>
+            <p><a href="фгос.md">ФГОС СПО</a> · <a href="PLAN.md">План работы</a> · <a href="зачет.md">Задание к зачёту</a></p>
+        </div>
+    </div>
+</body>
+</html>
