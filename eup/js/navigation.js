@@ -2,17 +2,27 @@
 (function() {
     'use strict';
 
-    // Маппинг страниц для хлебных крошек
+    // Маппинг страниц для хлебных крошек с эмодзи
     const pageMap = {
-        'index.html': { title: 'Титульная', parent: null },
-        'teoriya.html': { title: 'Теория', parent: 'index.html' },
-        'praktikum.html': { title: 'Практикум', parent: 'index.html' },
-        'testy.html': { title: 'Тесты', parent: 'index.html' },
-        'materialy.html': { title: 'Дополнительные материалы', parent: 'index.html' },
-        'rekomendacii.html': { title: 'Рекомендации тьютора', parent: 'index.html' }
+        'index.html': { title: '🏠 Главная', parent: null },
+        'teoriya.html': { title: '📖 Теория', parent: 'index.html' },
+        'praktikum.html': { title: '🔧 Практикум', parent: 'index.html' },
+        'testy.html': { title: '📝 Тесты', parent: 'index.html' },
+        'materialy.html': { title: '📚 Материалы', parent: 'index.html' },
+        'rekomendacii.html': { title: '💡 Рекомендации', parent: 'index.html' }
     };
 
-    // Подсветка активной ссылки в меню
+    // Иконки для страниц (для навигационных элементов)
+    const pageIcons = {
+        'index.html': '🏠',
+        'teoriya.html': '📖',
+        'praktikum.html': '🔧',
+        'testy.html': '📝',
+        'materialy.html': '📚',
+        'rekomendacii.html': '💡'
+    };
+
+    // ===== ACTIVE NAV HIGHLIGHT =====
     function highlightActiveNav() {
         const currentPage = window.location.pathname.split('/').pop();
         const links = document.querySelectorAll('.top-nav a');
@@ -26,7 +36,7 @@
         });
     }
 
-    // Хлебные крошки
+    // ===== BREADCRUMBS WITH EMOJI =====
     function buildBreadcrumbs() {
         const container = document.getElementById('breadcrumbs');
         if (!container) return;
@@ -35,8 +45,8 @@
         const info = pageMap[currentPage];
         if (!info) return;
 
-        let html = '<a href="../index.html">Главная</a><span class="sep">›</span>';
-        html += '<a href="../index.html">ЭУП</a>';
+        let html = '<a href="../index.html">🏠 Главная</a><span class="sep">›</span>';
+        html += '<a href="../index.html">📘 ЭУП</a>';
 
         if (info.parent) {
             const parentInfo = pageMap[info.parent];
@@ -46,7 +56,7 @@
             }
         }
 
-        if (info.title !== 'Титульная') {
+        if (info.title !== '🏠 Главная') {
             html += '<span class="sep">›</span>';
             html += '<span>' + info.title + '</span>';
         }
@@ -54,11 +64,10 @@
         container.innerHTML = html;
     }
 
-    // Отметка посещённых страниц (для статистики)
+    // ===== TRACK PAGE VISIT =====
     function trackPageVisit() {
         try {
             const currentPage = window.location.pathname.split('/').pop();
-            // Используем единую статистику из stats.js
             if (typeof window.addVisitedPage === 'function') {
                 window.addVisitedPage(currentPage);
             }
@@ -67,7 +76,7 @@
         }
     }
 
-    // Инициализация
+    // ===== INIT =====
     document.addEventListener('DOMContentLoaded', function() {
         highlightActiveNav();
         buildBreadcrumbs();

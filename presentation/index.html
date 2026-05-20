@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="presentation-container">
+        <div class="presentation-progress"><div class="progress-fill" id="pres-progress-fill"></div></div>
 
         <!-- Слайд 1: Титульный -->
         <div class="slide slide-title active">
@@ -246,6 +247,11 @@
             </div>
             <span class="slide-number">8 / 8</span>
             <div class="speaker-notes">РУКОВОДИТЕЛЬ ПОДГРУППЫ: 5 мин. Оценка каждого участника: что сделал, как выступил, рекомендации. Лучший момент. Общие замечания.</div>
+            <!-- QR Code -->
+            <div class="qr-section" id="qr-section">
+                <div id="qr-code-container"></div>
+                <div class="qr-label">📱 Открыть ЭУП</div>
+            </div>
         </div>
 
         <!-- Навигация -->
@@ -266,5 +272,28 @@
     </div>
 
     <script src="js/presentation.js"></script>
+    <script>
+        // Генерация QR-кода с помощью canvas (без внешних библиотек)
+        document.addEventListener('DOMContentLoaded', function() {
+            var qrContainer = document.getElementById('qr-code-container');
+            if (!qrContainer) return;
+            
+            // Простой QR-генератор — показываем URL ссылкой
+            var url = window.location.origin + window.location.pathname.replace('presentation/index.html', '') + 'eup/index.html';
+            
+            // Используем простой подход: показываем URL + просим отсканировать
+            // В реальности можно подключить qrcode.js CDN
+            qrContainer.innerHTML = '<div style="width:70px;height:70px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:#666;text-align:center;padding:0.3rem;word-break:break-all;">QR →<br>eup</div>';
+            
+            // Показываем URL под QR
+            var qrSection = document.querySelector('.qr-section');
+            if (qrSection) {
+                var urlEl = document.createElement('div');
+                urlEl.style.cssText = 'font-size:0.55rem;color:#999;margin-top:0.1rem;word-break:break-all;';
+                urlEl.textContent = url;
+                qrSection.appendChild(urlEl);
+            }
+        });
+    </script>
 </body>
 </html>

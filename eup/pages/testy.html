@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="top-bar">
+        <button class="hamburger" id="hamburger-btn" aria-label="Меню">☰</button>
         <div class="logo"><a href="../../index.html">📘</a> <a href="../index.html">ЭУП</a>: Тесты</div>
         <nav class="top-nav">
             <a href="../index.html">Главная</a>
@@ -17,6 +18,14 @@
             <a href="materialy.html">Материалы</a>
             <a href="rekomendacii.html">Рекомендации</a>
         </nav>
+        <div style="display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Поиск..." aria-label="Поиск по странице">
+            </div>
+            <button class="reading-mode-btn" onclick="toggleReadingMode()" title="Режим чтения">📖 <span class="label">Чтение</span></button>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Переключить тему">🌙 <span class="label">Тёмная</span></button>
+        </div>
     </div>
 
     <div id="breadcrumbs" class="breadcrumbs"></div>
@@ -25,6 +34,7 @@
         <div class="page-header">
             <h1>📝 Тестовые задания</h1>
             <p class="desc">Проверьте свои знания по теме тьюторского сопровождения проектной деятельности. 10 вопросов с автоматической проверкой.</p>
+            <span class="reading-time" id="reading-time-container"></span>
         </div>
 
         <div id="test-container">
