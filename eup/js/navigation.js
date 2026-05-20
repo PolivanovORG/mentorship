@@ -36,7 +36,7 @@
         if (!info) return;
 
         let html = '<a href="../index.html">Главная</a><span class="sep">›</span>';
-        html += '<a href="index.html">ЭУП</a>';
+        html += '<a href="../index.html">ЭУП</a>';
 
         if (info.parent) {
             const parentInfo = pageMap[info.parent];
@@ -58,12 +58,10 @@
     function trackPageVisit() {
         try {
             const currentPage = window.location.pathname.split('/').pop();
-            let progress = JSON.parse(localStorage.getItem('eup_progress') || '{}');
-            progress[currentPage] = {
-                visited: true,
-                date: new Date().toISOString()
-            };
-            localStorage.setItem('eup_progress', JSON.stringify(progress));
+            // Используем единую статистику из stats.js
+            if (typeof window.addVisitedPage === 'function') {
+                window.addVisitedPage(currentPage);
+            }
         } catch(e) {
             // localStorage недоступен
         }

@@ -60,6 +60,25 @@
             }
         });
 
+        // Заметки для выступающего
+        var notesBtn = document.getElementById('notes-toggle');
+        if (notesBtn) {
+            notesBtn.addEventListener('click', function() {
+                var visible = document.querySelectorAll('.speaker-notes.visible');
+                if (visible.length > 0) {
+                    document.querySelectorAll('.speaker-notes').forEach(function(n) {
+                        n.classList.remove('visible');
+                    });
+                    notesBtn.textContent = '📝 Заметки';
+                } else {
+                    document.querySelectorAll('.speaker-notes').forEach(function(n) {
+                        n.classList.add('visible');
+                    });
+                    notesBtn.textContent = '📝 Скрыть';
+                }
+            });
+        }
+
         // Таймер
         document.getElementById('timer-toggle').addEventListener('click', function() {
             if (timerInterval) {

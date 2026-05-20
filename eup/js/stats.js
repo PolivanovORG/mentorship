@@ -98,6 +98,19 @@
         container.innerHTML = html;
     };
 
+    // Добавить посещённую страницу в статистику
+    window.addVisitedPage = function(page) {
+        try {
+            var stats = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (!stats) return;
+            if (!stats.pagesVisited.includes(page)) {
+                stats.pagesVisited.push(page);
+                stats.lastVisit = new Date().toISOString();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+            }
+        } catch(e) {}
+    };
+
     // Инициализация при загрузке
     initStats();
 })();
