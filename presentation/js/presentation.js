@@ -94,6 +94,7 @@
             }
         });
 
+        updateProgressBar();
         updateSlideInfo();
     }
 
@@ -108,6 +109,7 @@
         currentSlide = index;
         updateDots();
         updateSlideInfo();
+        updateProgressBar();
     }
 
     function nextSlide() {
@@ -133,6 +135,14 @@
         var info = document.getElementById('slide-info');
         if (info) {
             info.textContent = (currentSlide + 1) + ' / ' + slides.length;
+        }
+    }
+
+    function updateProgressBar() {
+        var fill = document.getElementById('pres-progress-fill');
+        if (fill) {
+            var progress = ((currentSlide + 1) / slides.length) * 100;
+            fill.style.width = progress + '%';
         }
     }
 

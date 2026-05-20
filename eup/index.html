@@ -9,6 +9,7 @@
 <body>
     <!-- Header -->
     <div class="top-bar">
+        <button class="hamburger" id="hamburger-btn" aria-label="Меню">☰</button>
         <div class="logo"><a href="../index.html">📘</a> ЭУП: Тьюторское сопровождение</div>
         <nav class="top-nav">
             <a href="index.html" class="active">Главная</a>
@@ -18,6 +19,14 @@
             <a href="pages/materialy.html">Материалы</a>
             <a href="pages/rekomendacii.html">Рекомендации</a>
         </nav>
+        <div style="display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Поиск..." aria-label="Поиск по странице">
+            </div>
+            <button class="reading-mode-btn" onclick="toggleReadingMode()" title="Режим чтения">📖 <span class="label">Чтение</span></button>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Переключить тему">🌙 <span class="label">Тёмная</span></button>
+        </div>
     </div>
 
     <div id="breadcrumbs" class="breadcrumbs"></div>
@@ -71,7 +80,7 @@
             </div>
         </div>
 
-        <!-- Статистика -->
+        <!-- Статистика + Бейджи (рендерятся внутри displayStats) -->
         <div id="stats-container"></div>
     </div>
 
@@ -95,9 +104,43 @@
     <script src="js/stats.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Статистика + бейджи — всё внутри displayStats
             if (typeof displayStats === 'function') {
                 displayStats('stats-container');
             }
+
+            // Цветные статусы разделов
+            try {
+                var stats = JSON.parse(localStorage.getItem('eup_stats'));
+                var visited = stats ? stats.pagesVisited || [] : [];
+                var cardLinks = document.querySelectorAll('.card-item');
+
+                // Убираем старые метки перед обновлением
+                cardLinks.forEach(function(card) {
+                    var oldBadge = card.querySelector('.visit-badge');
+                    if (oldBadge) oldBadge.remove();
+                    card.style.borderLeft = '';
+                    card.style.background = '';
+                });
+
+                cardLinks.forEach(function(card) {
+                    var href = card.getAttribute('href');
+                    if (!href) return;
+                    var pageName = href.replace('pages/', '');
+                    if (visited.indexOf(pageName) !== -1) {
+                        card.style.borderLeft = '4px solid #27ae60';
+                        card.style.background = '#f0faf4';
+                        var badgeEl = document.createElement('span');
+                        badgeEl.className = 'visit-badge';
+                        badgeEl.textContent = '✅';
+                        badgeEl.style.cssText = 'position:absolute;top:0.5rem;right:0.8rem;font-size:1.2rem;pointer-events:none;';
+                        card.style.position = 'relative';
+                        card.appendChild(badgeEl);
+                    } else {
+                        card.style.borderLeft = '4px solid #3498db';
+                    }
+                });
+            } catch(e) {}
         });
     </script>
 </body>

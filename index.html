@@ -32,29 +32,45 @@
         }
         header {
             margin-bottom: 3rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: linear-gradient(-45deg, #1a1a2e, #2c3e50, #3498db, #2ecc71);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            box-shadow: 0 15px 50px rgba(44, 62, 80, 0.3);
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         header h1 {
             font-size: 2.2rem;
-            color: var(--primary);
             margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
         header .subtitle {
             font-size: 1.1rem;
-            color: #666;
+            opacity: 0.9;
             line-height: 1.6;
         }
         header .meta {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #888;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
         }
         header .meta span {
             display: inline-block;
-            margin: 0 0.5rem;
             padding: 0.3rem 0.8rem;
-            background: #e9ecef;
+            background: rgba(255,255,255,0.15);
             border-radius: 20px;
             font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .cards {
             display: grid;
@@ -63,21 +79,23 @@
             margin-bottom: 2.5rem;
         }
         .card {
-            background: white;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 2.5rem 2rem;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
             text-decoration: none;
             color: var(--text);
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 2px solid transparent;
+            border: 2px solid rgba(255,255,255,0.3);
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,0.95);
         }
         .card.eup { border-top: 5px solid var(--secondary); }
         .card.eup:hover { border-color: var(--secondary); }
@@ -104,8 +122,9 @@
             font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
+        .card .btn:hover { transform: scale(1.05); }
         .card.eup .btn { background: var(--secondary); color: white; }
         .card.eup .btn:hover { background: #2980b9; }
         .card.pres .btn { background: var(--accent); color: white; }
@@ -117,9 +136,17 @@
         }
         .footer a { color: var(--secondary); text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .cards .card:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.2s both; }
+        .cards .card:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.4s both; }
+        .footer { animation: fadeInUp 0.6s ease-out 0.6s both; }
         @media (max-width: 700px) {
             .cards { grid-template-columns: 1fr; }
             header h1 { font-size: 1.6rem; }
+            header { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -154,6 +181,7 @@
         <div class="footer">
             <p>На основе ФГОС СПО 09.02.07 (приказ Минобрнауки №1547) · Письмо Минпросвещения № А3-1128/08/657</p>
             <p><a href="фгос.md">ФГОС СПО</a> · <a href="PLAN.md">План работы</a> · <a href="зачет.md">Задание к зачёту</a></p>
+            <p style="margin-top:0.5rem;">Интерактивные подсказки · Тёмная тема · Режим чтения · ⌨️ Нажмите <kbd style="background:rgba(255,255,255,0.15);padding:0.1rem 0.4rem;border-radius:3px;font-family:monospace;">?</kbd> для шпаргалки</p>
         </div>
     </div>
 </body>
