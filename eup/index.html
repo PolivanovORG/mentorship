@@ -97,6 +97,10 @@
     <div class="footer">
         <p>© 2025 · Электронное учебное пособие по дисциплине «Технологии наставничества и тьюторинга в СПО»</p>
         <p><a href="../index.html">На главную</a> · <a href="../зачет.md">Задание к зачёту</a></p>
+        <p style="margin-top:0.5rem;font-size:0.8rem;">
+            📱 <a href="http://qrcoder.ru/code/?https%3A%2F%2Fevgpol.ru%2F&10&0" target="_blank">QR-код для мобильных</a> ·
+            🌙 <a href="#" onclick="toggleTheme();return false;">Тёмная тема</a>
+        </p>
     </div>
 
     <script src="js/navigation.js"></script>
@@ -123,6 +127,7 @@
                     card.style.background = '';
                 });
 
+                // Сбрасываем before установленный в CSS для секций
                 cardLinks.forEach(function(card) {
                     var href = card.getAttribute('href');
                     if (!href) return;
